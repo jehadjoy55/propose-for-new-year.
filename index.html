@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to 01.01.2025</title>
+    <style>
+        body {
+            font-family: 'Norican', cursive;
+            background: #090d00;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .countdown-container {
+            margin-top: 20%;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .countdown {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .countdown span {
+            font-size: 60px;
+            color: red;
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+            .countdown {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="countdown-container">
+        <h1>Countdown to 01.01.2025</h1>
+        <div class="countdown">
+            <p id="timer"></p>
+        </div>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const targetDate = new Date("Jan 1, 2025 00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const countdownInterval = setInterval(function() {
+
+            // Get the current date and time
+            const now = new Date().getTime();
+
+            // Find the distance between now and the target date
+            const distance = targetDate - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            // If the countdown is over, redirect to the link
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                window.location.href = "https://jehadjoy55.github.io/propose-for-new-year/";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
